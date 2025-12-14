@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Language Learning Bot</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+    .box {
+      background: #fff;
+      max-width: 600px;
+      margin: auto;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    select, input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    .response {
+      margin-top: 15px;
+      background: #eef;
+      padding: 10px;
+      border-radius: 5px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h3>🤖 بوت تعلم اللغات</h3>
+
+  <select id="language">
+    <option value="en">الإنجليزية</option>
+    <option value="fr">الفرنسية</option>
+  </select>
+
+  <select id="mode">
+    <option value="grammar">تعلم القواعد</option>
+    <option value="chat">محادثة</option>
+  </select>
+
+  <input type="text" id="userInput" placeholder="اكتب هنا">
+
+  <button onclick="runBot()">ابدأ</button>
+
+  <div class="response" id="response"></div>
+</div>
+
+<script>
+function runBot() {
+  const text = document.getElementById("userInput").value;
+  const mode = document.getElementById("mode").value;
+  const lang = document.getElementById("language").value;
+  let reply = "";
+
+  if (mode === "grammar" && lang === "en") {
+    reply = `
+    📘 القاعدة: المضارع البسيط يُستخدم للعادات.
+    <br>
+    ✏️ مثال: I study every day.
+    <br>
+    🧠 تمرين: I ___ football.
+    `;
+  }
+
+  if (mode === "chat" && lang === "en") {
+    reply = `
+    ❌ الجملة: ${text}
+    <br>
+    ✅ التصحيح: I go to school.
+    <br>
+    📌 الملاحظة: لا نستخدم am مع الفعل.
+    `;
+  }
+
+  document.getElementById("response").innerHTML = reply;
+}
+</script>
+
+</body>
+</html>
